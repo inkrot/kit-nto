@@ -1,0 +1,9 @@
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\bin\Debug\CSharpTextEditor.exe.config
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\obj\Debug\CSharpTextEditor.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\obj\Debug\CSharpTextEditor.Form1.resources
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\obj\Debug\CSharpTextEditor.Properties.Resources.resources
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\obj\Debug\CSharpTextEditor.csproj.GenerateResource.Cache
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\bin\Debug\CSharpTextEditor.exe
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\bin\Debug\CSharpTextEditor.pdb
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\obj\Debug\CSharpTextEditor.exe
+C:\Users\Admin\Desktop\kit-nto\1\CSharpTextEditor\CSharpTextEditor\obj\Debug\CSharpTextEditor.pdb
