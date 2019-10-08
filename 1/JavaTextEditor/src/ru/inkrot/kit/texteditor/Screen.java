@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.rmi.RemoteException;
 
 public class Screen extends JFrame implements ActionListener {
 
@@ -22,7 +23,7 @@ public class Screen extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
         setSize(700, 400);
         setLocationRelativeTo(null);
-
+        setTitle("Новый файл *");
         initGui();
     }
 
@@ -68,10 +69,11 @@ public class Screen extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
         String action = e.getActionCommand();
         if (action.equals(ACTION_NEW)) {
-
+            currentFile = null;
+            setTitle("Новый файл *");
+            textArea.setText("");
         } else if (action.equals(ACTION_OPEN)) {
             JFileChooser chooser = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -91,15 +93,27 @@ public class Screen extends JFrame implements ActionListener {
             }
         } else if (action.equals(ACTION_SAVE)) {
             if (currentFile != null) {
-                try {
-                    BufferedWriter writer = new BufferedWriter(
-                            new FileWriter(currentFile));
-                    writer.write(textArea.getText());
-                    writer.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+                writeFile(currentFile, textArea.getText());
+            } else {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new File("."));
+                int r = chooser.showOpenDialog(this);
+                if (r != JFileChooser.APPROVE_OPTION) return;
+                currentFile = chooser.getSelectedFile();
+                setTitle(chooser.getSelectedFile().getAbsolutePath());
+                writeFile(currentFile, textArea.getText());
             }
+        }
+    }
+
+    public void writeFile(File file, String data) {
+        try {
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter(file));
+            writer.write(data);
+            writer.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
     }
 }
