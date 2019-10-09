@@ -1,5 +1,7 @@
 package ru.inkrot.kit.texteditor;
 
+import javax.swing.*;
+
 public class Main {
 
     public Main() {
@@ -7,7 +9,8 @@ public class Main {
         screen.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         new Main();
     }
 }

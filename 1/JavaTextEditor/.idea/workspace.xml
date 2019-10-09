@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36a1201b-aaad-4522-86b2-9c485ea5ef60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/bin/Debug/CSharpTextEditor.vshost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/bin/Debug/CSharpTextEditor.vshost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/CSharpTextEditor.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/CSharpTextEditor.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/CSharpTextEditor.csproj.GenerateResource.Cache" beforeDir="false" afterPath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/CSharpTextEditor.csproj.GenerateResource.Cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/CSharpTextEditor.csprojResolveAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/CSharpTextEditor.csprojResolveAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../CSharpTextEditor/CSharpTextEditor/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Screen.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -57,32 +52,33 @@
     <session id="-176247939">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="4" />
+          <entry key="java" value="19" />
           <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="4" />
+          <entry key="JAVA" value="19" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="179" />
+          <entry key="java" value="1298" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="179" />
+          <entry key="JAVA" value="1298" />
         </counts>
       </usages-collector>
     </session>
@@ -118,17 +114,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Screen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="112" column="21" lean-forward="true" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -143,6 +129,17 @@
       <find>ACTION_NEW</find>
       <find>title</find>
       <find>remove</find>
+      <find>edit</find>
+      <find>write</find>
+      <find>writeFile</find>
+      <find>writeString</find>
+      <find>новый фа</find>
+      <find>OptionPane</find>
+      <find>Choo</find>
+      <find>Open</find>
+      <find>ss</find>
+      <find>sss</find>
+      <find>&quot;Open&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -178,6 +175,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,13 +198,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570621636076" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570655500655" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
@@ -261,31 +258,32 @@
       <workItem from="1570565031927" duration="1211000" />
       <workItem from="1570577645015" duration="29000" />
       <workItem from="1570617647939" duration="4033000" />
+      <workItem from="1570630671511" duration="11074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15341000" />
+    <option name="totallyTimeSpent" value="26415000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.19676113" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.1988273" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.3291815" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32827735" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.3202847" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3291815" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.31960997" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.3997833" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32827735" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -319,45 +317,69 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/io/FileNotFoundException.java" />
     <entry file="file://$PROJECT_DIR$/й.txt" />
     <entry file="file://$PROJECT_DIR$/ыв.txt" />
-    <entry file="file://$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/javax/swing/filechooser/FileNameExtensionFilter.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/javax/swing/JFileChooser.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/event/KeyListener.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/Component.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/plaf/basic/BasicOptionPaneUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        <state relative-caret-position="489">
+          <caret line="1185" column="57" selection-start-line="1185" selection-start-column="57" selection-end-line="1185" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/javax/swing/filechooser/FileNameExtensionFilter.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1465">
-          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        <state relative-caret-position="201">
+          <caret line="2831" selection-start-line="2831" selection-end-line="2831" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/javax/swing/JFileChooser.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/nio/file/Files.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="1118" column="38" selection-start-line="1118" selection-start-column="13" selection-end-line="1118" selection-end-column="38" />
+        <state relative-caret-position="384">
+          <caret line="89" column="19" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/event/KeyListener.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/nio/file/Path.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        <state relative-caret-position="-15923">
+          <caret line="97" column="17" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/Component.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JOptionPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="5611" column="45" lean-forward="true" selection-start-line="5611" selection-start-column="45" selection-end-line="5611" selection-end-column="45" />
+        <state relative-caret-position="193">
+          <caret line="852" column="38" selection-start-line="852" selection-start-column="22" selection-end-line="852" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/javax/swing/JFileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="117" column="7" lean-forward="true" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
+          <folding>
+            <element signature="e#9257#9258#0" expanded="true" />
+            <element signature="e#9313#9314#0" expanded="true" />
+            <element signature="e#10508#10509#0" expanded="true" />
+            <element signature="e#10569#10570#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Screen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="112" column="21" lean-forward="true" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+        <state relative-caret-position="262">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
         </state>
       </provider>
     </entry>
