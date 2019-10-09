@@ -5,6 +5,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.*;
 import java.rmi.RemoteException;
 
@@ -14,6 +16,8 @@ public class Screen extends JFrame implements ActionListener {
     public final String ACTION_OPEN = "ACTION_OPEN";
     public final String ACTION_SAVE = "ACTION_SAVE";
 
+    public String loadedFileText = null;
+    public boolean edited = false;
     public static File currentFile = null;
 
     private JTextArea textArea;
@@ -23,7 +27,8 @@ public class Screen extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
         setSize(700, 400);
         setLocationRelativeTo(null);
-        setTitle("Новый файл *");
+        //setTitle("Новый файл *");
+        setTitle("Текстовый редактор");
         initGui();
     }
 
@@ -59,7 +64,24 @@ public class Screen extends JFrame implements ActionListener {
                 textArea.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         textArea.setBounds(0, 0, 700, 400);
-
+        textArea.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (loadedFileText != null) {
+                    if (! loadedFileText.equals(textArea.getText())) {
+                        edited = true;
+                        Screen.this.setTitle(currentFile.getAbsolutePath() + " *");
+                    } else {
+                        edited = false;
+                        Screen.this.setTitle(currentFile.getAbsolutePath());
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         add(textArea, BorderLayout.CENTER);
 
         menuBar.add(fileMenu);
@@ -76,17 +98,24 @@ public class Screen extends JFrame implements ActionListener {
             textArea.setText("");
         } else if (action.equals(ACTION_OPEN)) {
             JFileChooser chooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                    "Выберите текстовый файл", "txt");
-            chooser.setFileFilter(filter);
+            chooser.setDialogTitle("Открыть");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Текстовый файл", "txt", "text");
+            chooser.addChoosableFileFilter(filter);
+            chooser.setAcceptAllFileFilterUsed(false);
             int returnVal = chooser.showOpenDialog(this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (! chooser.getSelectedFile().exists()) {
+                    JOptionPane.showMessageDialog(null, "Файл не найден");
+                    return;
+                }
                 currentFile = chooser.getSelectedFile();
                 setTitle(chooser.getSelectedFile().getAbsolutePath());
                 try {
                     BufferedReader reader = new BufferedReader(
                             new FileReader(currentFile));
-                    textArea.setText(reader.readLine());
+                    String text = reader.readLine();
+                    textArea.setText(text);
+                    loadedFileText = text;
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -95,19 +124,22 @@ public class Screen extends JFrame implements ActionListener {
             if (currentFile != null) {
                 writeFile(currentFile, textArea.getText());
             } else {
-                JFileChooser chooser = new JFileChooser();
-                chooser.setCurrentDirectory(new File("."));
-                int r = chooser.showOpenDialog(this);
-                if (r != JFileChooser.APPROVE_OPTION) return;
-                currentFile = chooser.getSelectedFile();
-                setTitle(chooser.getSelectedFile().getAbsolutePath());
-                writeFile(currentFile, textArea.getText());
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Сохранить файл");
+                int userSelection = fileChooser.showSaveDialog(this);
+                if (userSelection == JFileChooser.APPROVE_OPTION) {
+                    File fileToSave = fileChooser.getSelectedFile();
+                    currentFile = fileToSave;
+                    setTitle(fileChooser.getSelectedFile().getAbsolutePath());
+                    writeFile(currentFile, textArea.getText());
+                }
             }
         }
     }
 
     public void writeFile(File file, String data) {
         try {
+            if (! file.exists()) file.createNewFile();
             BufferedWriter writer = new BufferedWriter(
                     new FileWriter(file));
             writer.write(data);
