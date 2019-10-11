@@ -19,7 +19,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.List;
 
-public class Screen extends JFrame implements ActionListener {
+public class Screen extends JFrame implements ActionListener, ItemListener {
 
     public final String TITLE = "Редактор документов";
     public final String ACTION_NEW = "ACTION_NEW";
@@ -129,13 +129,13 @@ public class Screen extends JFrame implements ActionListener {
         closeBtn.setActionCommand(ACTION_CLOSE);
         fileMenu.add(closeBtn);
 
-        JMenu fontMenu = new JMenu("Форматирование");
-        fontMenu.setFont(font);
-        menuBar.add(fontMenu);
+        menuBar.add(fontCombo = new JComboBox(new String[]{"Шрифт: Arial", "Шрифт: Calibri", "Шрифт: Comic Sans MS", "Шрифт: Impact", "Шрифт: Times New Roman"}));
+        menuBar.add(sizeCombo = new JComboBox(new String[]{"Размер: 8", "Размер: 12", "Размер: 16", "Размер: 20", "Размер: 24"}));
+        menuBar.add(colorCombo = new JComboBox(new String[]{"Цвет: черный", "Цвет: синий", "Цвет: желтый", "Цвет: зеленый", "Цвет: красный"}));
 
-        fontMenu.add(fontCombo = new JComboBox(new String[]{"Шрифт: Arial", "Шрифт: Calibri", "Шрифт: Comic Sans MS", "Шрифт: Impact", "Шрифт: Times New Roman"}));
-        fontMenu.add(sizeCombo = new JComboBox(new String[]{"Размер: 8", "Размер: 10", "Размер: 12", "Размер: 14", "Размер: 16"}));
-        fontMenu.add(colorCombo = new JComboBox(new String[]{"Цвет: черный", "Цвет: синий", "Цвет: желтый", "Цвет: зеленый", "Цвет: красный"}));
+        fontCombo.addItemListener(this);
+        sizeCombo.addItemListener(this);
+        colorCombo.addItemListener(this);
 
         textArea = new JTextArea();
         textArea.setFont(font);
@@ -153,21 +153,31 @@ public class Screen extends JFrame implements ActionListener {
             @Override
             public void keyReleased(KeyEvent e) {
                 if (loadedFileText != null) {
-                    if (! loadedFileText.equals(textArea.getText())) {
-                        edited = true;
-                        if (currentFile != null) Screen.this.setTitle(currentFile.getAbsolutePath() + " *");
-                        else Screen.this.setTitle("Новый файл *");
-                    } else {
-                        edited = false;
-                        if (currentFile != null) Screen.this.setTitle(currentFile.getAbsolutePath());
-                        else Screen.this.setTitle("Новый файл");
-                    }
+                    if (! loadedFileText.equals(textArea.getText())) setEdited(true);
+                    else setEdited(false);
                 }
             }
         });
         add(textArea, BorderLayout.CENTER);
-
         setJMenuBar(menuBar);
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getStateChange() != ItemEvent.SELECTED) return;
+        JComboBox c = (JComboBox) e.getSource();
+        String option = (String) c.getSelectedItem();
+        if (c.equals(fontCombo)) {
+            String value = option.substring(7);
+            textArea.setFont(new Font(value, 0, textArea.getFont().getSize()));
+        } else if (c.equals(sizeCombo)) {
+            String value = option.substring(8);
+            textArea.setFont(new Font(textArea.getFont().getFamily(), 0, Integer.parseInt(value)));
+        } else if (c.equals(colorCombo)) {
+            String value = option.substring(6);
+            textArea.setForeground(strToColor(value));
+        }
+        setEdited(true);
     }
 
     @Override
@@ -219,18 +229,35 @@ public class Screen extends JFrame implements ActionListener {
         } else if (action.equals(ACTION_CLOSE)) {
             if (! checkIsSaved()) return;
             textArea.setText("");
-            edited = false;
+            setEdited(false);
             closeEdit();
         }
     }
 
+    public void setEdited(boolean edited) {
+        if (edited) {
+            if (currentFile != null) Screen.this.setTitle(currentFile.getAbsolutePath() + " *");
+            else Screen.this.setTitle("Новый файл *");
+        } else {
+            if (currentFile != null) Screen.this.setTitle(currentFile.getAbsolutePath());
+            else Screen.this.setTitle("Новый файл");
+        }
+        this.edited = edited;
+    }
+
     public void closeEdit() {
         setTitle(TITLE);
+        fontCombo.setVisible(false);
+        sizeCombo.setVisible(false);
+        colorCombo.setVisible(false);
         saveBtn.setEnabled(false);
         textArea.setEnabled(false);
     }
 
     public void openEdit() {
+        fontCombo.setVisible(true);
+        sizeCombo.setVisible(true);
+        colorCombo.setVisible(true);
         saveBtn.setEnabled(true);
         textArea.setEnabled(true);
     }
@@ -240,29 +267,50 @@ public class Screen extends JFrame implements ActionListener {
     }
 
     public void loadWord() {
-        File file = new File("C:/Users/Admin/Desktop/kit-nto/2/JavaDocEditor/src/main/resources/document.docx");
+        File file = new File("C:/Users/Islam/Desktop/kit-nto\\2\\JavaDocEditor\\src\\main\\resources\\document.docx");
         try {
+            currentFile = file;
             FileInputStream fis = new FileInputStream(file);
             XWPFDocument doc = new XWPFDocument(fis);
             List<XWPFParagraph> paragraphs = doc.getParagraphs();
             XWPFParagraph paragraph = paragraphs.get(0);
             XWPFRun run = paragraph.getRuns().get(0);
-            System.out.println(Color.decode("#" + run.getColor()));
-            System.out.println(run.getFontSize());
-            System.out.println(run.getFontFamily());
-            System.out.println(paragraph.getText());
 
-            textArea.setText(loadedFileText = paragraph.getText());
             loadedFileTextFont = run.getFontFamily();
             loadedFileTextColor = Color.decode("#" + run.getColor());
             loadedFileTextSize = run.getFontSize();
+            loadedFileText = paragraph.getText();
+
             textArea.setFont(new Font(loadedFileTextFont, 0, loadedFileTextSize));
             textArea.setForeground(loadedFileTextColor);
+            textArea.setText(loadedFileText);
+
+            fontCombo.setSelectedItem("Шрифт: " + loadedFileTextFont);
+            sizeCombo.setSelectedItem("Размер: " + loadedFileTextSize);
+            colorCombo.setSelectedItem("Цвет: " + colorToStr(loadedFileTextColor));
+
+            setEdited(false);
 
             fis.close();
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
+
+    private Color strToColor(String str) {
+        if (str.equals("синий")) return Color.BLUE;
+        if (str.equals("желтый")) return Color.YELLOW;
+        if (str.equals("зеленый")) return Color.GREEN;
+        if (str.equals("красный")) return Color.RED;
+        return Color.BLACK;
+    }
+
+    private String colorToStr(Color color) {
+        if (color.equals(Color.BLUE)) return "синий";
+        if (color.equals(Color.YELLOW)) return "желтый";
+        if (color.equals(Color.GREEN)) return "зеленый";
+        if (color.equals(Color.RED)) return "красный";
+        return "черный";
     }
 
     // return: true - продолжить; false - отмена
