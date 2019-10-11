@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36a1201b-aaad-4522-86b2-9c485ea5ef60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/inkrot/kit/texteditor/Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../2/JavaDocEditor/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../2/JavaDocEditor/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../2/JavaDocEditor/src/main/java/ru/inkrot/kit/doceditor/WordWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../2/JavaDocEditor/src/main/resources/document.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,11 +55,12 @@
     <session id="-176247939">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -114,7 +118,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -174,8 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,6 +200,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,11 +263,13 @@
       <workItem from="1570577645015" duration="29000" />
       <workItem from="1570617647939" duration="4033000" />
       <workItem from="1570630671511" duration="11074000" />
+      <workItem from="1570655961300" duration="60000" />
+      <workItem from="1570780079176" duration="13000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26415000" />
+    <option name="totallyTimeSpent" value="26488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -273,7 +279,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.1988273" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.20309168" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32827735" />
@@ -360,12 +366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="117" column="7" lean-forward="true" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
-          <folding>
-            <element signature="e#9257#9258#0" expanded="true" />
-            <element signature="e#9313#9314#0" expanded="true" />
-            <element signature="e#10508#10509#0" expanded="true" />
-            <element signature="e#10569#10570#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
