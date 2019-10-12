@@ -63,14 +63,14 @@
             // newMenuItem
             // 
             this.newMenuItem.Name = "newMenuItem";
-            this.newMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.newMenuItem.Size = new System.Drawing.Size(154, 22);
             this.newMenuItem.Text = "Новый";
             this.newMenuItem.Click += new System.EventHandler(this.newMenuItem_Click);
             // 
             // openMenuItem
             // 
             this.openMenuItem.Name = "openMenuItem";
-            this.openMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.openMenuItem.Size = new System.Drawing.Size(154, 22);
             this.openMenuItem.Text = "Открыть";
             this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
             // 
@@ -78,14 +78,14 @@
             // 
             this.saveMenuItem.Enabled = false;
             this.saveMenuItem.Name = "saveMenuItem";
-            this.saveMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.saveMenuItem.Size = new System.Drawing.Size(154, 22);
             this.saveMenuItem.Text = "Сохранить";
             this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
             // 
             // closeMenuItem
             // 
             this.closeMenuItem.Name = "closeMenuItem";
-            this.closeMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.closeMenuItem.Size = new System.Drawing.Size(154, 22);
             this.closeMenuItem.Text = "Закрыть";
             this.closeMenuItem.Click += new System.EventHandler(this.closeMenuItem_Click);
             // 

@@ -25,6 +25,12 @@ namespace CSharpTextEditor
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Resize += new EventHandler(Form1_OnResize);
+            this.FormClosing += Form1_FormClosing;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!checkIsSaved()) e.Cancel = true;
         }
 
         private void Form1_OnResize(object sender, System.EventArgs e)

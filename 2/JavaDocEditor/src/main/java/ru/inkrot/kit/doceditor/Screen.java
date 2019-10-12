@@ -32,10 +32,6 @@ public class Screen extends JFrame implements ActionListener, ItemListener {
     public int loadedFileTextSize = 0;
     public Color loadedFileTextColor = null;
 
-    //public String currentFileTextFont = null;     textArea.getFont().getFamily()
-    //public int currentFileTextSize = 0;           textArea.getFont().getSize()
-    //public Color currentFileTextColor = null;     textArea.getForeground()
-
     private boolean edited = false;
 
     private static File currentFile = null;
