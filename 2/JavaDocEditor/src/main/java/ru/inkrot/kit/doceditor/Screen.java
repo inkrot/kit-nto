@@ -275,9 +275,10 @@ public class Screen extends JFrame implements ActionListener, ItemListener {
             run.setFontSize(loadedFileTextSize);
             Color c = loadedFileTextColor;
             run.setColor(String.format("%02X%02X%02X", c.getRed(), c.getGreen(), c.getBlue()));
-            for (String line : textArea.getText().split("\n")) {
-                run.setText(line);
-                run.addBreak();
+            String[] lines = textArea.getText().split("\n");
+            for (int i = 0; i < lines.length; i++) {
+                run.setText(lines[i]);
+                if (i != lines.length - 1) run.addBreak();
             }
             document.write(out);
             out.close();
