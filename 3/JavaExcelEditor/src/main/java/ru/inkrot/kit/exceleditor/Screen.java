@@ -255,10 +255,23 @@ public class Screen extends JFrame implements ActionListener {
         }
     }
 
+    private ExcelTable createEmptyTable() {
+        ExcelTable excelTable = new ExcelTable();
+        for (int i = 0; i <= 7; i++) {
+            excelTable.newRow();
+            for (int j = 0; j <= 7; j++) {
+                excelTable.addColumn(null);
+            }
+        }
+        return excelTable;
+    }
+
     private void initTable(File file) {
-        if (tableScroll  != null) remove(tableScroll);
+        if (tableScroll != null) remove(tableScroll);
         if (file != null) {
             ExcelTable excelTable = readFromExcel(file);
+            System.out.println(excelTable.getRowsNum());
+            if (excelTable.getRowsNum() == 1) excelTable = createEmptyTable();
             table = new JTable(excelTable.getAsArray(), excelTable.getHeaders());
         }
         else table = new JTable();
@@ -272,23 +285,31 @@ public class Screen extends JFrame implements ActionListener {
                 int row = table.getSelectedRow();
                 int column = table.getSelectedColumn();
                 String value = ((String)table.getValueAt(row, column));
-                if (value.startsWith("SIN(")) {
-                    String arg = value.substring(4, value.length() - 1);
-                    if (isNumeric(arg)) formulaField.setText(String.valueOf(Math.sin(Double.valueOf(arg))));
-                    else {
-                        int r = Integer.valueOf(String.valueOf(arg.charAt(1))) - 1;
-                        int c = arg.charAt(0) - 65;
-                        String v = ((String)table.getValueAt(r, c));
-                        if (isNumeric(v)) formulaField.setText(String.valueOf(Math.sin(Double.valueOf(v))));
-                        else formulaField.setText("Ошибка");
+                if (value != null) {
+                    if (value.startsWith("SIN(")) {
+                        String arg = value.substring(4, value.length() - 1);
+                        String s;
+                        if (isNumeric(arg)) s = String.valueOf(Math.sin(Double.valueOf(arg)));
+                        else if (arg.equals("PI()")) s = String.valueOf(Math.sin(Math.PI));
+                        else {
+                            int r = Integer.valueOf(String.valueOf(arg.charAt(1))) - 1;
+                            int c = arg.charAt(0) - 65;
+                            String v = ((String) table.getValueAt(r, c));
+                            if (isNumeric(v)) s = String.valueOf(Math.sin(Double.valueOf(v)));
+                            else s = "Ошибка";
+                        }
+                        if (isNumeric(s)) {
+                            if (Math.abs(Double.valueOf(s)) <= Math.pow(10, -7)) s = "0";
+                        }
+                        formulaField.setText(s);
+                    } else formulaField.setText("");
+                    if (selectedCell != null) {
+                        if (row != selectedCell.y && column != selectedCell.x) checkEdited();
                     }
-                } else formulaField.setText("");
-                if (selectedCell != null) {
-                    if (row != selectedCell.y && column != selectedCell.x) checkEdited();
-                }
-                if (mouseEvent.getClickCount() == 2 && row != -1) {
-                    selectedCell = new Point(column, row);
-                    selectedValue = (String) table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+                    if (mouseEvent.getClickCount() == 2 && row != -1) {
+                        selectedCell = new Point(column, row);
+                        selectedValue = (String) table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+                    }
                 }
             }
         });
@@ -317,6 +338,7 @@ public class Screen extends JFrame implements ActionListener {
         int row = table.getSelectedRow();
         int column = table.getSelectedColumn();
         if (table.getSelectedRow() != -1) {
+            if (selectedCell == null) return;
             String value = (String) table.getValueAt(selectedCell.y, selectedCell.x);
             if (selectedValue == null) {
                 if (value == null) setEdited(true);
