@@ -1,15 +1,10 @@
 package ru.inkrot.kit.texteditor;
 
-import com.sun.jnlp.ApiDialog;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.rmi.RemoteException;
-
-import static java.lang.System.out;
 
 public class Screen extends JFrame implements ActionListener {
 
@@ -89,19 +84,19 @@ public class Screen extends JFrame implements ActionListener {
         newBtn.addActionListener(this);
         newBtn.setActionCommand(ACTION_NEW);
         fileMenu.add(newBtn);
-        //////////
+
         JMenuItem openBtn = new JMenuItem("Открыть");
         openBtn.setFont(font);
         openBtn.addActionListener(this);
         openBtn.setActionCommand(ACTION_OPEN);
         fileMenu.add(openBtn);
-        //////////
+
         saveBtn = new JMenuItem("Сохранить");
         saveBtn.setFont(font);
         saveBtn.addActionListener(this);
         saveBtn.setActionCommand(ACTION_SAVE);
         fileMenu.add(saveBtn);
-        //////////
+
         JMenuItem closeBtn = new JMenuItem("Закрыть");
         closeBtn.setFont(font);
         closeBtn.addActionListener(this);

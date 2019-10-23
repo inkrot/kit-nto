@@ -102,7 +102,6 @@ public class Screen extends JFrame implements ActionListener {
         newBtn.setFont(font);
         newBtn.addActionListener(this);
         newBtn.setActionCommand(ACTION_NEW);
-        newBtn.setEnabled(false);
         fileMenu.add(newBtn);
 
         JMenuItem openBtn = new JMenuItem("Открыть");
@@ -140,7 +139,7 @@ public class Screen extends JFrame implements ActionListener {
 
             currentFile = null;
 
-            // TODO: SET TABLE DATA
+            initTable(null);
 
             setEdited(false);
             openEdit();
@@ -267,14 +266,13 @@ public class Screen extends JFrame implements ActionListener {
     }
 
     private void initTable(File file) {
+        ExcelTable excelTable = createEmptyTable();
         if (tableScroll != null) remove(tableScroll);
         if (file != null) {
-            ExcelTable excelTable = readFromExcel(file);
-            System.out.println(excelTable.getRowsNum());
+            excelTable = readFromExcel(file);
             if (excelTable.getRowsNum() == 1) excelTable = createEmptyTable();
-            table = new JTable(excelTable.getAsArray(), excelTable.getHeaders());
         }
-        else table = new JTable();
+        table = new JTable(excelTable.getAsArray(), excelTable.getHeaders());
         table.setFont(font);
         tableScroll = new JScrollPane(table);
         table.setPreferredScrollableViewportSize(new Dimension(250, 100));
@@ -403,7 +401,7 @@ public class Screen extends JFrame implements ActionListener {
                 File selectedFile = fileChooser.getSelectedFile();
                 String path = selectedFile.getPath();
                 currentFile = new File(path.endsWith(".xls") ? path : path + ".xls");
-                // TODO: writeIntoExcel
+                writeIntoExcel();
                 setEdited(false);
             }
         }
